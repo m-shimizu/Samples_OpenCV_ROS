@@ -8,13 +8,13 @@ project(my_opencv)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  OpenCV
   cv_bridge
   image_transport
   roscpp
   sensor_msgs
   std_msgs
 )
+find_package(OpenCV REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -108,7 +108,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES my_opencv
-#  CATKIN_DEPENDS OpenCV cv_bridge image_transport roscpp sensor_msgs std_msgs
+#  CATKIN_DEPENDS cv_bridge image_transport roscpp sensor_msgs std_msgs
 #  DEPENDS system_lib
 )
 
@@ -201,6 +201,6 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(optical_flow2 src/optical_flow.cpp)
-target_link_libraries(optical_flow2 ${catkin_LIBRARIES} )
+add_executable(optical_flow src/optical_flow.cpp)
+target_link_libraries(optical_flow ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} )
 
