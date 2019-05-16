@@ -2,10 +2,13 @@
 
 ## How to use
 
-  $ cd  
-  $ git clone https://github.com/m-shimizu/OpenCV\_Sample  
-  $ cd OpenCVi\_Sample  
-  $ catkin\_make  
-  $ source devel/setup.bash  
-  $ roslaunch my\_opencv optical\_flow.launch  
+    $ cd  
+    $ git clone https://github.com/m-shimizu/OpenCV_Sample  
+    $ cd OpenCVi_Sample  
+    $ catkin_make  
+    $ source devel/setup.bash  
+    $ roslaunch my_opencv   optical_flow.launch  
 
+## A sample for creating a new package working with OpenCV  
+
+    $  catkin_create_pkg my_opencv cv_bridge image_transport roscpp sensor_msgs std_msgs OpenCV  
