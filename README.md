@@ -1,13 +1,13 @@
-#OpenCV Sample
+#OpenCV Samples in ROS  
 
-## How to use
+## How to use this repository  
 
     $ cd  
-    $ git clone https://github.com/m-shimizu/OpenCV_Sample  
-    $ cd OpenCVi_Sample  
+    $ git clone https://github.com/m-shimizu/Samples_OpenCV_ROS  
+    $ cd Samples_OpenCV_ROS  
     $ catkin_make  
     $ source devel/setup.bash  
-    $ roslaunch my_opencv   optical_flow.launch  
+    $ roslaunch my_opencv  optical_flow.launch  
 
 ## A sample for creating a new package working with OpenCV  
 * catkin_create_pkg options:  
