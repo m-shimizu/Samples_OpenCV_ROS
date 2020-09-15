@@ -1,9 +1,9 @@
 <launch>
-  <node pkg="mypyimg1" type="image_pub.py" name="image_pub1" args="/home/secu/images/capturedDesktop1.png">
+  <node pkg="my_opencv" type="image_pub.py" name="image_pub1" args="$(dirname)/../images/SammpleImage.png">
     <remap from="image" to="/image_out1" />
   </node>
 
-  <node pkg="mypyimg1" type="image_binaryS.py" name="image_binaryS1">
+  <node pkg="my_opencv" type="image_binaryS.py" name="image_binaryS1">
     <remap from="image_in" to="/image_out1" />
     <remap from="image_out" to="/image_out" />
   </node>

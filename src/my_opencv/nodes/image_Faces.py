@@ -71,7 +71,7 @@ if __name__ == '__main__':
         if argc == 2:
             fileName = rospy.myargv(argv=sys.argv)[1]
         else:
-            fileName = '/home/secu/image_ws/src/mypyimg1/nodes/haarcascade_frontalface_default.xml'
+            fileName = '/home/USERNAME/Samples_OpenCV_ROS/src/my_opencv/nodes/haarcascade_frontalface_default.xml'
         start_node(fileName)
     except rospy.ROSInterruptException:
         pass
