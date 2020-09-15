@@ -1,0 +1,16 @@
+<launch>
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_maze.launch">
+    <arg name="world" value="maze4" />
+  </include>
+  
+  <node pkg="turtlebot3_teleop" type="turtlebot3_teleop_key" name="teleop_key1" />
+
+  <node pkg="mypyimg1" type="image_binaryS.py" name="image_binaryS1">
+    <remap from="image_in" to="/camera/rgb/image_raw" />
+    <remap from="image_out" to="/image_out1" />
+  </node>
+
+  <node pkg="rqt_image_view" type="rqt_image_view" name="rqt_image_view1">
+    <remap from="image" to="/image_out1" />
+  </node>
+</launch>

@@ -1,0 +1,26 @@
+<launch>
+  <group ns="case1">
+    <include file="$(find my_libuvc_camera)/launch/KYT_camera.launch">
+    </include>
+
+<!--
+    <node pkg="mypyimg1" type="image_pub.py" name="image_pub1" args="/home/secu/images/capturedDesktop1.png">
+      <remap from="image" to="camera/image_raw" />
+    </node>
+-->
+
+    <node pkg="mypyimg1" type="image_resizeS.py" name="image_resizeS1" args="0.5 0.5">
+      <remap from="image_in"   to="camera/image_raw" />
+      <remap from="image_out"  to="image_out1" />
+    </node>
+
+    <node pkg="mypyimg1" type="image_Faces.py" name="image_Faces1" args="$(dirname)/../nodes/haarcascade_frontalface_default.xml">
+      <remap from="image_in"   to="image_out1" />
+      <remap from="image_out"  to="image_out2" />
+    </node>
+
+    <node pkg="rqt_image_view" type="rqt_image_view" name="rqt_image_view1">
+      <remap from="image"      to="image_out2" />
+    </node>
+  </group>
+</launch>
