@@ -26,6 +26,7 @@ def process_image(msg):
         abs_64f = np.absolute(laplacian)
         img_8u  = np.uint8(abs_64f)
         # Convert 8U into BGR8
+        #rsltimg = cv2.merge([img_8u, img_8u, img_8u])
         rsltimg = cv2.cvtColor(img_8u, cv2.COLOR_GRAY2BGR)
         # Publishing the processed image to the topic (NECESSARY)
         imgMsg = bridge.cv2_to_imgmsg(rsltimg, "bgr8")
