@@ -4,7 +4,7 @@
 
     $ cd  
     $ git clone https://github.com/m-shimizu/Samples_OpenCV_ROS  
-    $ sudo apt install ros-melodic-usb-cam ros-melodic-uvc-camamera libzbar-dev python-pip  
+    $ sudo apt install ros-melodic-usb-cam ros-melodic-libuvc-camera ros-melodic-uvc-camera libzbar-dev python-pip  
     $ pip install pyzbar pillow  
     $ cd Samples_OpenCV_ROS  
     $ catkin_make  
@@ -17,6 +17,7 @@ Create an image file including your face as "SampleFace.png" under ~/Samples_Ope
 ## Program descriptions  
 
 * Nodes  
+
 |Name|Description|Language|
 |:---|:----------|:------:|
 |optical_flow|Tracking moving objects|C++|
@@ -29,6 +30,7 @@ Create an image file including your face as "SampleFace.png" under ~/Samples_Ope
 |image_X.py|A template file|Python|
 
 * Launch files(Samples for using above nodes)  
+
 |Name|Description|
 |:---|:-----------|
 |optical_flow.launch|Start uvc_camera and optical_flow|
@@ -52,3 +54,5 @@ Create an image file including your face as "SampleFace.png" under ~/Samples_Ope
 * [ROBOTIS Turtlebot3 e-Manual](http://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)  
 * [Robot Ignite Academy: Linux for Robotics](https://www.robotigniteacademy.com/ja/course/linux-for-robotics_40_0/)  
 * [Robot Ignite Academy: Python 3 for Robotics](https://www.robotigniteacademy.com/ja/course/python-3-for-robotics_38_0/)  
+
+EDITED: 15.Jul.2021  
