@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 import rospy
 import sys
 import cv2
@@ -31,7 +31,7 @@ def process_image(msg):
         pub = rospy.Publisher('image_out', Image, queue_size=10)
         pub.publish(imgMsg)
     except Exception as err:
-        print err
+        print(err)
 
 def start_node():
     # Preparing a window for putting sliders and/or viewing an image
