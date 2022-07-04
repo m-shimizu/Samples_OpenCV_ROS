@@ -2,34 +2,30 @@
 import rospy
 import sys
 import cv2
-import numpy as np
 from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
 
-programName = 'image_laplacian'
+programName = 'image_gray'
 
 def cb_nop(data):
     pass
 
 def showImage(img): # PLEASE USE THIS FOR DEBUG ONLY
     cv2.imshow(programName, img)
-    cv2.waitKey()
+#    cv2.waitKey(1)
 
 def process_image(msg):
     try:
         # Subscribing the original image from the topic (NECESSARY)
         bridge = CvBridge()
         orig = bridge.imgmsg_to_cv2(msg, "bgr8")
+
+        # Image Processing (NECESSARY) : GRAY SCALE
         gray = cv2.cvtColor(orig, cv2.COLOR_BGR2GRAY)
-        laplacian = cv2.Laplacian(gray, cv2.CV_64F)
-        # Convert 64F into 8U
-        abs_64f = np.absolute(laplacian)
-        img_8u  = np.uint8(abs_64f)
-        # Convert 8U into BGR8
-        #rsltimg = cv2.merge([img_8u, img_8u, img_8u])
-        rsltimg = cv2.cvtColor(img_8u, cv2.COLOR_GRAY2BGR)
+        cvimg = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
+
         # Publishing the processed image to the topic (NECESSARY)
-        imgMsg = bridge.cv2_to_imgmsg(rsltimg, "bgr8")
+        imgMsg = bridge.cv2_to_imgmsg(cvimg, "bgr8")
         pub = rospy.Publisher('image_out', Image, queue_size=10)
         pub.publish(imgMsg)
     except Exception as err:
@@ -38,9 +34,8 @@ def process_image(msg):
 def start_node():
     # Preparing a window for putting sliders and/or viewing an image
     cv2.namedWindow(programName, cv2.WINDOW_FREERATIO)
-    # Creating sliders (IF YOU NEED SLIDERS)
-#    cv2.createTrackbar("Xresize(X10)", programName, int(xrsz * 10), 20, cb_nop)
-#    cv2.createTrackbar("Yresize(X10)", programName, int(yrsz * 10), 20, cb_nop)
+    # Creating sliders (IF YOU NEED A SLIDER)
+    #cv2.createTrackbar("BinTh", programName, 128, 255, cb_nop)
     # Initializing this program as a ROS NODE
     rospy.init_node(programName)
     rospy.loginfo(programName + ' node started')
@@ -57,17 +52,6 @@ def start_node():
 if __name__ == '__main__':
     try:
         start_node()
-#        argc = len(rospy.myargv(argv=sys.argv))
-#        if argc == 2:
-#            xrsz = float(rospy.myargv(argv=sys.argv)[1])
-#            yrsz = xrsz
-#        elif argc == 3:
-#            xrsz = float(rospy.myargv(argv=sys.argv)[1])
-#            yrsz = float(rospy.myargv(argv=sys.argv)[2])
-#        else:
-#            xrsz = 1.0
-#            yrsz = 1.0
-#        start_node(xrsz, yrsz)
 #        start_node( rospy.myargv(argv=sys.argv)[1])
     except rospy.ROSInterruptException:
         pass
