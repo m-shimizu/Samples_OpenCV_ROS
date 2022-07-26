@@ -4,7 +4,7 @@
 
     $ cd  
     $ git clone https://github.com/m-shimizu/Samples_OpenCV_ROS  
-    $ sudo apt install ros-noetic-usb-cam ros-noetic-libuvc-camera ros-noetic-uvc-camera libzbar-dev python3-pip  
+    $ sudo apt install ros-noetic-usb-cam ros-noetic-libuvc-camera libzbar-dev python3-pip  
     $ pip install pyzbar pillow  
     $ cd Samples_OpenCV_ROS  
     $ catkin_make  
@@ -55,4 +55,4 @@ Create an image file including your face as "SampleFace.png" under ~/Samples_Ope
 * [Robot Ignite Academy: Linux for Robotics](https://www.robotigniteacademy.com/ja/course/linux-for-robotics_40_0/)  
 * [Robot Ignite Academy: Python 3 for Robotics](https://www.robotigniteacademy.com/ja/course/python-3-for-robotics_38_0/)  
 
-EDITED: 20.Jun.2022  
+EDITED: 26.Jul.2022  
