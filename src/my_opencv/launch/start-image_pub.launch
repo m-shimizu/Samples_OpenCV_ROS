@@ -1,5 +1,5 @@
 <launch>
-  <node pkg="my_opencv" type="image_pub.py" name="image_pub1" args="$(dirname)/../images/SammpleImage.png">
+  <node pkg="my_opencv" type="image_pub.py" name="image_pub1" args="$(dirname)/../images/SampleImage.png">
     <remap from="image" to="/image_out1" />
   </node>
 
